@@ -5,30 +5,78 @@ class Tache
 {
     private $idTache;
     private $nom;
-    private $duree;
-    private $description;
+    private $terminee;
+    private $idListeTaches;
 
-    public function __construct($idTache, $nom, $duree, $description){
-        $this->idTache = $idTache;
-        $this->nom = $nom;
-        $this->duree = $duree;
-        $this->description = $description;
+    public function __construct($idTache, $nom, $terminee, $idListeTaches){
+        $this->setIdTache($idTache);
+        $this->setNom($nom);
+        $this->setTerminee($terminee);
+        $this->setIdListeTaches($idListeTaches);
     }
 
-    public function getIdTache(){
+    /**
+     * @return mixed
+     */
+    public function getIdTache()
+    {
         return $this->idTache;
     }
 
-    public function getNom(){
+    /**
+     * @return mixed
+     */
+    public function getNom()
+    {
         return $this->nom;
     }
 
-    public function getDuree(){
-        return $this->duree;
+    /**
+     * @return mixed
+     */
+    public function getTerminee()
+    {
+        return $this->terminee;
     }
 
-    public function getDescription(){
-        return $this->description;
+    /**
+     * @return mixed
+     */
+    public function getIdListeTaches()
+    {
+        return $this->idListeTaches;
+    }
+
+    /**
+     * @param mixed $idTache
+     */
+    public function setIdTache($idTache)
+    {
+        $this->idTache = $idTache;
+    }
+
+    /**
+     * @param mixed $nom
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    }
+
+    /**
+     * @param mixed $terminee
+     */
+    public function setTerminee($terminee)
+    {
+        $this->terminee = $terminee;
+    }
+
+    /**
+     * @param mixed $idListeTaches
+     */
+    public function setIdListeTaches($idListeTaches)
+    {
+        $this->idListeTaches = $idListeTaches;
     }
 
 }

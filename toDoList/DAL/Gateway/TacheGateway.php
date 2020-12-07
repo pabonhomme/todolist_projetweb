@@ -10,26 +10,25 @@ class TacheGateway
         $this->con=$c;
     }
 
-
-    public function findAllTache(){
-        $query='SELECT * FROM TACHE order by idTache';
-        $this->con->executeQuery($query, array());
+    public function getAllTachesByIdListeTaches($idListeTaches){
+        $query='SELECT * FROM TACHE where idListeTaches=:idListeTaches order by idTache';
+        $this->con->executeQuery($query, array(':idListeTaches'=>array($idListeTaches, PDO::PARAM_INT)));
         $results = $this->con->getResults();
         foreach($results as $row){
-            $this->tabN[]=new Tache($row['idTache'], $row['nom'], $row['duree'],$row['description'] );
+            $this->tabN[]=new Tache($row['idTache'], $row['nom'] ,$row['terminee'], $row['idListeTaches'] );
         }
         return $this->tabN;
     }
 
-    public function insertTache($idTache, $nom, $duree, $description){
-        $query='Insert into Tache values(:idTache, :nom, :duree, :description )';
-        $this->con->executeQuery($query, array(':idTache'=>array($idTache, PDO::PARAM_STR), ':nom'=>array($nom, PDO::PARAM_STR),
-            ':duree'=>array($duree, PDO::PARAM_STR), ':description'=>array($description, PDO::PARAM_STR)));
+    public function insertTache($nom, $terminee, $idListeTaches){
+        $query='Insert into Tache values(NULL, :nom, :terminee, :idListeTaches )';
+        $this->con->executeQuery($query, array(':nom'=>array($nom, PDO::PARAM_STR),
+            ':terminee'=>array($terminee, PDO::PARAM_INT), ':idListeTaches'=>array($idListeTaches, PDO::PARAM_INT)));
     }
 
     public function deleteTache($idTache){
         $query='DELETE FROM Tache where idTache=:idTache';
-        $this->con->executeQuery($query, array(':idTache'=>array($idTache, PDO::PARAM_STR)));
+        $this->con->executeQuery($query, array(':idTache'=>array($idTache, PDO::PARAM_INT)));
     }
 
     public function nbTache(){

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -6,8 +6,8 @@
 </head>
 <body>
 
-<form action="index.php?action=afficherTaches" method="post">
-    <input type="submit" value="afficher Taches">
+<form action="index.php?action=AfficherListePubliques" method="post">
+    <input type="submit" value="Afficher les liste publiques">
 </form>
 
 </body>

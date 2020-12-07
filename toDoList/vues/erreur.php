@@ -5,8 +5,8 @@
 <body>
 
 <?php
-if (isset($dVueEreur)) {
-    foreach ($dVueEreur as $value) {
+if (isset($Vueerreur)) {
+    foreach ($Vueerreur as $value) {
         echo $value;
     }
 }

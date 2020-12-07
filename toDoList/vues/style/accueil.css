@@ -1,0 +1,93 @@
+
+/*JUMBOTTRON DE LA PAGE*/
+#accroche {
+  background-color: #238bc4;
+  background-size: cover;
+  text-align: center;
+  color:white;
+  padding : 75;
+}
+
+
+/*NAVBAR*/
+.rounded.float-left {
+  height: 75px;
+}
+
+
+.nav-link {
+  border-bottom: 3px solid #238bc4;
+  margin-right: 5;
+}
+
+
+/*Style de l'ajout d'une to Do List */
+.AjoutListe {
+  background-image: url(test.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding : 100;
+  color: white;
+  text-align: left;
+  margin-top: 100px;
+}
+
+
+
+/* Style the input */
+input {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
+
+/* Style the "Add" button */
+.addBtn {
+  padding: 10px;
+  width: 25%;
+  background: #d9d9d9;
+  color: #555;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0;
+}
+
+.addBtn:hover {
+  background-color: #bbb;
+}
+
+
+/*Style pour la listePublique de tâche*/
+.ListePublique {
+  list-style: square;
+  margin: 100;
+  color: white;
+  padding: 20;
+  box-shadow: 0 0 3px 3px #238bc4;
+
+}
+
+/*Style pour la listePrivée de tâche*/
+
+.ListePrivée {
+  list-style: square;
+  margin: 100;
+  color: white;
+  padding: 20;
+  box-shadow: 0 0 3px 3px #54c2ff;
+
+}
+
+.btn-outline-primary:hover {
+    background-color: gray;
+}
+
+
+

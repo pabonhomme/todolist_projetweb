@@ -9,25 +9,73 @@ class Utilisateur
     private $motDePasse;
 
     public function __construct($pseudo, $nom, $prenom, $motDePasse){
-        $this->pseudo = $pseudo;
-        $this->nom = $nom;
-        $this->prenom = $prenom;
-        $this->motDePasse = $motDePasse;
+        $this->setPseudo($pseudo);
+        $this->setNom($nom);
+        $this->setPrenom($prenom);
+        $this->setMotDePasse($motDePasse);
     }
 
-    public function getPseudo(){
+    /**
+     * @return mixed
+     */
+    public function getPseudo()
+    {
         return $this->pseudo;
     }
 
-    public function getNom(){
+    /**
+     * @return mixed
+     */
+    public function getNom()
+    {
         return $this->nom;
     }
 
-    public function getPrenom(){
+    /**
+     * @return mixed
+     */
+    public function getPrenom()
+    {
         return $this->prenom;
     }
 
-    public function getMotDePasse(){
+    /**
+     * @return mixed
+     */
+    public function getMotDePasse()
+    {
         return $this->motDePasse;
+    }
+
+    /**
+     * @param mixed $pseudo
+     */
+    public function setPseudo($pseudo)
+    {
+        $this->pseudo = $pseudo;
+    }
+
+    /**
+     * @param mixed $nom
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    }
+
+    /**
+     * @param mixed $prenom
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+    }
+
+    /**
+     * @param mixed $motDePasse
+     */
+    public function setMotDePasse($motDePasse)
+    {
+        $this->motDePasse = $motDePasse;
     }
 }
