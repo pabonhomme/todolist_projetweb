@@ -39,20 +39,18 @@ class VisiteurControleur
     function Reinit()
     {
         global $rep, $vues;
-        require($rep . $vues['vuephp1']);
+
+        $tabListeTaches = ModelListeTaches::getAllListeTachesPublic();
+        foreach ($tabListeTaches as $liste) {
+            $liste->setListeTaches(ModelTache::getAllTachesByIdListeTaches($liste->getIdListeTaches()));
+        }
+        require($rep . $vues['accueil']);
     }
 
     function AfficherListePubliques()
     {
         global $rep, $vues;
-        $modelListeTaches = new ModelListeTaches();
-        $modelTache = new ModelTache();
 
-        $tabListeTaches = $modelListeTaches->getAllListeTachesPublic();
-        foreach ($tabListeTaches as $liste) {
-            $liste->setListeTaches($modelTache->getAllTachesByIdListeTaches($liste->getIdListeTaches()));
-        }
-        require($rep . $vues['accueil']);
     }
 
 
