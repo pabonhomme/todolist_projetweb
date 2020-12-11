@@ -23,7 +23,7 @@
 
 /*Style de l'ajout d'une to Do List */
 .AjoutListe {
-  background-image: url(test.png);
+  background-image: url(../img/test.png);
   background-size: cover;
   background-repeat: no-repeat;
   padding : 100;

@@ -46,7 +46,7 @@ class ListeTaches
      */
     public function getListeTaches()
     {
-        return $this->listeTaches;
+        return $this->listeDeTaches;
     }
 
     /**
@@ -82,11 +82,11 @@ class ListeTaches
     }
 
     /**
-     * @param mixed $listeTaches
+     * @param mixed $listeDeTaches
      */
-    public function setListeTaches($listeTaches)
+    public function setListeTaches($listeDeTaches)
     {
-        $this->listeTaches = $listeTaches;
+        $this->listeDeTaches = $listeDeTaches;
     }
 
     /**
