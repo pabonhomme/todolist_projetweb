@@ -1,4 +1,4 @@
-<?php require("header.php")?>
+<?php require("vueHeader.php")?>
 
 <div class="jumbotron jumbotron-fluid" id="Accroche">
     <div class="container-fluid">

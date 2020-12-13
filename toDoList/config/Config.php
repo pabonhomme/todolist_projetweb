@@ -1,7 +1,7 @@
 <?php
 
 // général pour trouver dossier
-$rep=__DIR__.'/../';
+$rep = __DIR__ . '/../';
 
 // liste des modules à inclure
 
@@ -9,17 +9,16 @@ $rep=__DIR__.'/../';
 
 //BD
 $dsn = 'mysql:host=localhost;dbname=toDoList;charset=utf8';
-$base="toDoList";
-$login="root";
-$mdp="";
+$base = "toDoList";
+$login = "root";
+$mdp = "";
 
 //Vues
-$vues['erreur']='vues/erreur.php';
-$vues['vuephp1']='vues/vuephp1.php';
-$vues['vueListeTaches']='vues/vueListeTaches.php';
-
-$vues['accueil']='vues/accueil.php';
-$vues['aide']='vues/aide.php';
-$vues['ajoutTache']='vues/ajoutTache.php';
-$vues['connexion']='vues/connexion.php';
+$vues['erreur'] = 'vues/vueErreur.php';
+$vues['accueil'] = 'vues/vueAccueil.php';
+$vues['aide'] = 'vues/vueAide.php';
+$vues['vueDetailListe'] = 'vues/vueDetailListe.php';
+$vues['connexion'] = 'vues/vueConnexion.php';
+$vues['vueListesPrivees'] = 'vues/vueListesPrivees.php';
+$vues['ajoutDescription'] = 'vues/vueAjoutDescriptionListe.php';
 

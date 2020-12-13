@@ -1,4 +1,4 @@
-<?php require("header.php")?>
+<?php require("vueHeader.php")?>
 
 <div class="jumbotron jumbotron-fluid" id="Accroche">
     <div class="container-fluid">
@@ -12,10 +12,10 @@
 
     <h1>Connectez-vous</h1>
 
-    <p>Nom d'utilisateur</p>
+    <label>Nom d'utilisateur</label>
     <input type="text" placeholder="Entrer le nom d'utilisateur" name="username" required>
 
-    <p>Mot de passe </p>
+    <label>Mot de passe </label>
     <input type="password" placeholder="Entrer le mot de passe" name="password" required>
     <input type="submit" value='LOGIN' >
     <button class="btn btn-outline-primary" type="submit" >CreerSonCompte</button>

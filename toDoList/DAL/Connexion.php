@@ -26,4 +26,10 @@ class Connexion extends PDO
         return $this->stmt->fetchall();
 
     }
+
+    public function getResult()
+    {
+        return $this->stmt->fetch();
+
+    }
 }

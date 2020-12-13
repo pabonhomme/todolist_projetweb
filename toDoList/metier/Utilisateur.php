@@ -8,7 +8,8 @@ class Utilisateur
     private $prenom;
     private $motDePasse;
 
-    public function __construct($pseudo, $nom, $prenom, $motDePasse){
+    public function __construct($pseudo, $nom, $prenom, $motDePasse)
+    {
         $this->setPseudo($pseudo);
         $this->setNom($nom);
         $this->setPrenom($prenom);

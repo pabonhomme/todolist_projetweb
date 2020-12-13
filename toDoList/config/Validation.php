@@ -11,13 +11,12 @@ class Validation
 
     public static function ValidationMail($email)
     {
-        if(!isset($email) or empty($email))
+        if (!isset($email) or empty($email))
             return false;
 
-        $email=filter_var($email, FILTER_SANITIZE_EMAIL);
+        $email = filter_var($email, FILTER_SANITIZE_EMAIL);
 
-        if(filter_var($email, FILTER_VALIDATE_EMAIL))
-        {
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return true;
         }
 
@@ -27,19 +26,17 @@ class Validation
 
     public static function ValidationBoolean($boolean)
     {
-        if(!isset($boolean) or empty($boolean))
+        if (!isset($boolean) or empty($boolean))
             return false;
 
 
-        if(filter_var($boolean, FILTER_VALIDATE_BOOLEAN))
-        {
+        if (filter_var($boolean, FILTER_VALIDATE_BOOLEAN)) {
             return true;
         }
 
         return false;
 
     }
-
 
 
 }
