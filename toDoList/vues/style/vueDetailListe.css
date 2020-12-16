@@ -24,7 +24,6 @@
 {
     text-align: center;
     color: white;
-    width: auto;
     padding: 20;
     box-shadow: 0 0 3px 3px #54c2ff;
 
@@ -63,7 +62,7 @@ h4
     background-color: #bbb;
 }
 
-input {
+#BoutonAjoutTache {
     margin: 0;
     border: none;
     border-radius: 0;

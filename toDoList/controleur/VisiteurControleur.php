@@ -19,8 +19,20 @@ class VisiteurControleur
                 case "AfficherDetailListe":
                     $this->AfficherDetailListe();
                     break;
-                case "AfficherListeTachesPrivees":
-                    $this->AfficherListeTachesPrivees();
+                case "AjouterTache":
+                    $this->AjouterTache();
+                    break;
+                case "AjouterDescription":
+                    $this->AjouterDescription();
+                    break;
+                case "AjouterListe":
+                    $this->AjouterListe();
+                    break;
+                case "SupprimerTache":
+                    $this->SupprimerTache();
+                    break;
+                case "SupprimerListeTaches":
+                    $this->SupprimerListeTaches();
                     break;
                 case "AfficherConnexion":
                     $this->AfficherConnexion();
@@ -45,39 +57,61 @@ class VisiteurControleur
 
     function Reinit()
     {
-        global $rep, $vues;
-
+        global $rep, $vues, $tacheMax;
         $tabListeTaches = ModelListeTaches::getAllListeTachesPublic();
         foreach ($tabListeTaches as $liste) {
             $liste->setListeTaches(ModelTache::getAllTachesByIdListeTaches($liste->getIdListeTaches()));
         }
         require($rep . $vues['accueil']);
     }
+
     function AfficherDetailListe()
     {
         global $rep, $vues;
-
         $idListeTaches = $_REQUEST['idListeTaches'];
         $listetaches = ModelListeTaches::getListeTachesbyID($idListeTaches);
         $listetaches->setListeTaches(ModelTache::getAllTachesByIdListeTaches($listetaches->getIdListeTaches()));
         require($rep . $vues['vueDetailListe']);
     }
 
-//    function AfficherDetailListe()
-//    {
-//        global $rep, $vues;
-//
-//        $idListeTaches = $_REQUEST['idListeTaches'];
-//        $listetaches = ModelListeTaches::getListeTachesbyID($idListeTaches);
-//        foreach($listetaches as $liste){
-//            $liste->setListeTaches(ModelTache::getAllTachesByIdListeTaches($liste->getIdListeTaches()));
-//        }
-//        require($rep . $vues['vueDetailListe']);
-//    }
-
-    function AfficherListeTachesPrivees()
+    function AjouterTache()
     {
         global $rep, $vues;
+        $NomTache = Validation::ValidationString($_REQUEST['NomTache']);
+        $listeTache = $_REQUEST['idListeTaches'];
+        ModelTache::insertTache($NomTache, false, $listeTache);
+        $this->Reinit();
+    }
+
+    function AjouterDescription()
+    {
+        global $rep, $vues;
+        $nomListe = Validation::ValidationString($_REQUEST['nomListe']);
+        require($rep . $vues['ajoutDescriptionListe']);
+    }
+
+    function AjouterListe()
+    {
+        $nomListe = Validation::ValidationString($_REQUEST['nomListe']);
+        $description = Validation::ValidationString($_REQUEST['description']);
+        ModelListeTaches::insertListeTaches($nomListe, false, $description);
+        $this->Reinit();
+    }
+
+    function SupprimerTache()
+    {
+        global $rep, $vues;
+        $IdTache = $_REQUEST['idTache'];
+        ModelTache::deleteTachebyIdTache($IdTache);
+        $this->Reinit();
+    }
+
+    function SupprimerListeTaches()
+    {
+        global $rep, $vues;
+        $IdlisteTache = $_REQUEST['idListeTaches'];
+        ModelListeTaches::deleteListeTaches($IdlisteTache);
+        $this->Reinit();
     }
 
     function AfficherConnexion()

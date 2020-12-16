@@ -23,11 +23,18 @@ class ModelTache
         $gateway->insertTache($nom, $terminee, $idListeTaches);
     }
 
-    static function deleteTache($idTache)
+    static function deleteTachebyIdTache($idTache)
     {
         global $dsn, $login, $mdp;
         $gateway = new TacheGateway(new Connexion($dsn, $login, $mdp));
-        $gateway->deleteTache($idTache);
+        $gateway->deleteTachebyIdTache($idTache);
+    }
+
+    static function deleteTacheByIdListeTaches($idListeTaches)
+    {
+        global $dsn, $login, $mdp;
+        $gateway = new TacheGateway(new Connexion($dsn, $login, $mdp));
+        $gateway->deleteTacheByIdListeTaches($idListeTaches);
     }
 
     static function getNombreDeTache()

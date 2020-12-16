@@ -14,26 +14,26 @@ class UtilisateurGateway
 
     public function findAllUtilisateur()
     {
-        $querry = 'SELECT * FROM UTILISATEUR order by nom';
+        $querry = 'SELECT * FROM UTILISATEUR order by pseudo';
         $this->con->executeQuerry($querry, array());
         $results = $this->con->getResults();
 
         foreach ($results as $row)
-            $this->tabU[] = new Utilisateur($row['pseudo'], $row['nom'], $row['prenom'], $row['motDePasse']);
+            $this->tabU[] = new Utilisateur($row['pseudo'], $row['motDePasse']);
 
         return $this->tabU;
     }
 
 
-    public function supprimerUtilisateur($nom)
+    public function supprimerUtilisateur($pseudo)
     {
-        $querry = 'DELETE FROM UTILISATEUR WHERE nom = :nom';
-        $this->con->executeQuerry($querry, array(':nom' => array($nom, PDO::PARAM_STR)));
+        $querry = 'DELETE FROM UTILISATEUR WHERE pseudo = :pseudo';
+        $this->con->executeQuerry($querry, array(':pseudo' => array($pseudo, PDO::PARAM_STR)));
     }
 
-    public function insererUtilisateur($pseudo, $nom, $prenom, $motDePasse)
+    public function insererUtilisateur($pseudo, $motDePasse)
     {
-        $querry = 'INSERT INTO UTILISATEUR VALUES(:pseudo, :nom, :prenom, :motDePasse)';
-        $this->con->executeQuery($querry, array(':pseudo' => array($pseudo, PDO::PARAM_STR), ':nom' => array($nom, PDO::PARAM_STR), ':prenom' => array($prenom, PDO::PARAM_STR), ':motDePasse' => array($motDePasse, PDO::PARAM_STR)));
+        $querry = 'INSERT INTO UTILISATEUR VALUES(:pseudo,:motDePasse)';
+        $this->con->executeQuery($querry, array(':pseudo' => array($pseudo, PDO::PARAM_STR), ':motDePasse' => array($motDePasse, PDO::PARAM_STR)));
     }
 }

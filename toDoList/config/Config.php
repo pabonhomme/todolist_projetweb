@@ -3,6 +3,8 @@
 // général pour trouver dossier
 $rep = __DIR__ . '/../';
 
+// variable pour le nombre de tache maximum visible sur page d'accueil
+$tacheMax = 3;
 // liste des modules à inclure
 
 //$dConfig['includes']=array('Validation.php');
@@ -20,5 +22,5 @@ $vues['aide'] = 'vues/vueAide.php';
 $vues['vueDetailListe'] = 'vues/vueDetailListe.php';
 $vues['connexion'] = 'vues/vueConnexion.php';
 $vues['vueListesPrivees'] = 'vues/vueListesPrivees.php';
-$vues['ajoutDescription'] = 'vues/vueAjoutDescriptionListe.php';
+$vues['ajoutDescriptionListe'] = 'vues/vueAjoutDescriptionListe.php';
 

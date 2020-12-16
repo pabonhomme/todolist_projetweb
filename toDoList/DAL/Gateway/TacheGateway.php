@@ -25,10 +25,16 @@ class TacheGateway
             ':terminee' => array($terminee, PDO::PARAM_INT), ':idListeTaches' => array($idListeTaches, PDO::PARAM_INT)));
     }
 
-    public function deleteTache($idTache)
+    public function deleteTachebyIdTache($idTache)
     {
         $query = 'DELETE FROM Tache where idTache=:idTache';
         $this->con->executeQuery($query, array(':idTache' => array($idTache, PDO::PARAM_INT)));
+    }
+
+    public function deleteTacheByIdListeTaches($idListeTaches)
+    {
+        $query = 'DELETE FROM Tache where idListeTaches=:idListeTaches';
+        $this->con->executeQuery($query, array(':idListeTaches' => array($idListeTaches, PDO::PARAM_INT)));
     }
 
     public function nbTache()

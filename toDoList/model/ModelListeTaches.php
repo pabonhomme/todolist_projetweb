@@ -3,7 +3,8 @@
 
 class ModelListeTaches
 {
-    static function getListeTachesbyID($idListeTache){
+    static function getListeTachesbyID($idListeTache)
+    {
         global $dsn, $login, $mdp;
         $gateway = new ListeTachesGateway(new Connexion($dsn, $login, $mdp));
         $result = $gateway->getListeTachesbyID($idListeTache);
@@ -41,18 +42,20 @@ class ModelListeTaches
         $gateway->insertListeTaches($nom, $confidentialite, $description);
     }
 
-    static function deleteListeTaches($idListeTache)
+    static function deleteListeTaches($idListeTaches)
     {
         global $dsn, $login, $mdp;
         $gateway = new ListeTachesGateway(new Connexion($dsn, $login, $mdp));
-        $gateway->deleteListeTaches($idListeTache);
+        ModelTache::deleteTacheByIdListeTaches($idListeTaches);
+        $gateway->deleteListeTaches($idListeTaches);
     }
 
     static function getNombreDeTache()
     {
         global $dsn, $login, $mdp;
         $gateway = new ListeTachesGateway(new Connexion($dsn, $login, $mdp));
-        return $gateway->nbListeTaches();
+        $results = $gateway->nbListeTaches();
+        return $results[0]["count(*)"];
     }
 
 }

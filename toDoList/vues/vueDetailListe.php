@@ -1,20 +1,18 @@
 <?php require("vueHeader.php") ?>
 
-<div class="jumbotron jumbotron-fluid" id="Accroche">
-    <div class="container-fluid">
-        <h1 class="display-4 font-weight-bold">Bienvenue sur notre site de création de TO DO LIST !</h1>
-        <p class="lead font-weight-bold">Rapide, Efficace, Simple.</p>
-    </div>
-</div>
-
-
 <div id="VoirPlusTache" class="container">
 
     <h2><?php echo $listetaches->getNom() ?></h2>
+
     <ul>
         <?php foreach ($listetaches->getListeTaches() as $tache) {
             if (!$tache->getTerminee()) { ?>
-                <li><?php echo $tache->getNom() ?></li>
+                <li><?php echo $tache->getNom() ?>
+                    <form method="post" action="index.php?action=SupprimerTache">
+                        <input type="hidden" name="idTache" value="<?php echo $tache->getIdTache() ?>">
+                        <button class="btn btn-outline-primary" type="submit"> Supprimer Tache</button>
+                    </form>
+                </li>
             <?php }
         } ?>
     </ul>
@@ -26,10 +24,21 @@
 <div class="container">
     <div id="AjoutTache">
         <h2>Ajouter une tâche</h2>
-        <input type="text" placeholder="Entrez le nom de la tâche">
-        <div class="AddBtn">ajouter la tâche</div>
+        <form method="post" action="index.php?action=AjouterTache">
+            <input type="hidden" name="idListeTaches" value="<?php echo $listetaches->getIdListeTaches() ?>">
+            <input id="BoutonAjoutTache" name="NomTache" type="text" placeholder="Entrez le nom de la tâche">
+            <input type="submit" class="AddBtn mb-5" value="Ajouter la tâche">
+        </form>
     </div>
 </div>
 
+<div class="container">
 
+
+    <form method="post" action="index.php?action=SupprimerListeTaches" style="width: 35%; margin-bottom: 50">
+        <input type="hidden" name="idListeTaches" value="<?php echo $listetaches->getIdListeTaches()?>">
+        <button class="btn btn-outline-primary" type="submit"> Supprimer Liste Taches</button>
+    </form>
+
+</div>
 </body>
