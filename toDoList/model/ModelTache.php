@@ -4,7 +4,7 @@
 class ModelTache
 {
 
-    static function getAllTachesByIdListeTaches($idListeTaches)
+    static function getAllTachesByIdListeTaches($idListeTaches):array
     {
         global $dsn, $login, $mdp;
         $tabN = array();
@@ -35,6 +35,13 @@ class ModelTache
         global $dsn, $login, $mdp;
         $gateway = new TacheGateway(new Connexion($dsn, $login, $mdp));
         $gateway->deleteTacheByIdListeTaches($idListeTaches);
+    }
+
+    static function getTacheByIdTache($idTache){
+        global $dsn, $login, $mdp;
+        $gateway = new TacheGateway(new Connexion($dsn, $login, $mdp));
+        $result = $gateway->getTacheByIdTache($idTache);
+        return new Tache($result['idTache'], $result['nom'], $result['terminee'], $result['idListeTaches']);
     }
 
     static function getNombreDeTache()

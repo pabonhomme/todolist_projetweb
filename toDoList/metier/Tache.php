@@ -8,7 +8,7 @@ class Tache
     private $terminee;
     private $idListeTaches;
 
-    public function __construct($idTache, $nom, $terminee, $idListeTaches)
+    public function __construct(int $idTache, string $nom, bool $terminee, int $idListeTaches)
     {
         $this->setIdTache($idTache);
         $this->setNom($nom);

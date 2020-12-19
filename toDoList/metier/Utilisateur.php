@@ -4,12 +4,10 @@
 class Utilisateur
 {
     private $pseudo;
-    private $motDePasse;
 
-    public function __construct($pseudo, $motDePasse)
+    public function __construct(string $pseudo)
     {
         $this->setPseudo($pseudo);
-        $this->setMotDePasse($motDePasse);
     }
 
     /**
@@ -21,14 +19,6 @@ class Utilisateur
     }
 
     /**
-     * @return mixed
-     */
-    public function getMotDePasse()
-    {
-        return $this->motDePasse;
-    }
-
-    /**
      * @param mixed $pseudo
      */
     public function setPseudo($pseudo)
@@ -36,11 +26,4 @@ class Utilisateur
         $this->pseudo = $pseudo;
     }
 
-    /**
-     * @param mixed $motDePasse
-     */
-    public function setMotDePasse($motDePasse)
-    {
-        $this->motDePasse = $motDePasse;
-    }
 }

@@ -9,7 +9,7 @@ class ListeTaches
     private $confidentialite;
     private $description;
 
-    public function __construct($idListeTaches, $nom, $confidentialite, $description)
+    public function __construct(int $idListeTaches, string $nom, bool $confidentialite, string $description)
     {
         $this->setIdListeTaches($idListeTaches);
         $this->setNom($nom);

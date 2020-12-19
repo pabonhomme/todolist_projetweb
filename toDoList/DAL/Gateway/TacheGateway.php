@@ -37,6 +37,12 @@ class TacheGateway
         $this->con->executeQuery($query, array(':idListeTaches' => array($idListeTaches, PDO::PARAM_INT)));
     }
 
+    public function getTacheByIdTache($idTache){
+        $query = 'SELECT * FROM Tache where idTache=:idTache';
+        $this->con->executeQuery($query, array(':idTache' => array($idTache, PDO::PARAM_INT)));
+        return $this->con->getResult();
+    }
+
     public function nbTache()
     {
         $query = 'SELECT count(*) FROM Tache';

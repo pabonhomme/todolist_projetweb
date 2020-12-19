@@ -8,7 +8,11 @@ class VisiteurControleur
 
         $Vueerreur = array();
         try {
-            $action = $_REQUEST['action'];
+            if (isset($_REQUEST["action"])) {
+                $action = $_REQUEST["action"];
+            } else {
+                $action = NULL;
+            }
 
             switch ($action) {
 
@@ -33,6 +37,9 @@ class VisiteurControleur
                     break;
                 case "SupprimerListeTaches":
                     $this->SupprimerListeTaches();
+                    break;
+                case "Connexion":
+                    $this->Connexion();
                     break;
                 case "AfficherConnexion":
                     $this->AfficherConnexion();
@@ -77,23 +84,23 @@ class VisiteurControleur
     function AjouterTache()
     {
         global $rep, $vues;
-        $NomTache = Validation::ValidationString($_REQUEST['NomTache']);
-        $listeTache = $_REQUEST['idListeTaches'];
-        ModelTache::insertTache($NomTache, false, $listeTache);
-        $this->Reinit();
+        $NomTache = Nettoyage::NettoyageString($_REQUEST['NomTache']);
+        $idListeTaches = $_REQUEST['idListeTaches'];
+        ModelTache::insertTache($NomTache, false, $idListeTaches);
+        header('Refresh:0;url=index.php?action=AfficherDetailListe&idListeTaches='.$idListeTaches);
     }
 
     function AjouterDescription()
     {
         global $rep, $vues;
-        $nomListe = Validation::ValidationString($_REQUEST['nomListe']);
+        $nomListe = Nettoyage::NettoyageString($_REQUEST['nomListe']);
         require($rep . $vues['ajoutDescriptionListe']);
     }
 
     function AjouterListe()
     {
-        $nomListe = Validation::ValidationString($_REQUEST['nomListe']);
-        $description = Validation::ValidationString($_REQUEST['description']);
+        $nomListe = Nettoyage::NettoyageString($_REQUEST['nomListe']);
+        $description = Nettoyage::NettoyageString($_REQUEST['description']);
         ModelListeTaches::insertListeTaches($nomListe, false, $description);
         $this->Reinit();
     }
@@ -102,8 +109,9 @@ class VisiteurControleur
     {
         global $rep, $vues;
         $IdTache = $_REQUEST['idTache'];
+        $idListeTaches = ModelTache::getTacheByIdTache($IdTache)->getIdListeTaches();
         ModelTache::deleteTachebyIdTache($IdTache);
-        $this->Reinit();
+        header('Refresh:0;url=index.php?action=AfficherDetailListe&idListeTaches='.$idListeTaches);
     }
 
     function SupprimerListeTaches()
@@ -112,6 +120,27 @@ class VisiteurControleur
         $IdlisteTache = $_REQUEST['idListeTaches'];
         ModelListeTaches::deleteListeTaches($IdlisteTache);
         $this->Reinit();
+    }
+
+    function Connexion()
+    {
+        global $rep, $vues;
+        $pseudo = $_REQUEST['pseudo'];
+        $mdp = $_REQUEST['mdp'];
+        $data = array();
+        if (isset($pseudo) && isset($mdp)){
+            $Vueerreur = Validation::ValidationConnnexion($pseudo, $mdp);
+            if(empty($Vueerreur)){
+                if(ModelUtilisateur::connexion($pseudo, $mdp)){
+                        $data[] = "Connexion réussie !";
+                        header('Refresh:1;url=index.php');
+                } else {
+                    $data[] = "Problème de connexion ! Le pseudo ou mot de passe est incorrect !";
+                }
+            }
+        }
+        sleep(1);
+        require($rep . $vues['connexion']);
     }
 
     function AfficherConnexion()

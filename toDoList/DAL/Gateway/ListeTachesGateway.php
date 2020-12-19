@@ -4,7 +4,6 @@
 class ListeTachesGateway
 {
     private $con;
-    private $tabN;
 
     public function __construct($c)
     {
@@ -26,7 +25,7 @@ class ListeTachesGateway
 
     public function getAllListeTachesByPseudo($pseudo)
     {
-        $query = 'SELECT * FROM ListeTaches where pseudo=:pseudo order by idListeTaches';
+        $query = 'SELECT * FROM ListeTaches where confidentialite = true pseudo=:pseudo order by idListeTaches';
         $this->con->executeQuery($query, array(':pseudo' => array($pseudo, PDO::PARAM_STR)));
         return $this->con->getResults();
     }

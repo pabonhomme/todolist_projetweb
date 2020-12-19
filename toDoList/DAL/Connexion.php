@@ -32,4 +32,9 @@ class Connexion extends PDO
         return $this->stmt->fetch();
 
     }
+
+    public function getCount() : int
+    {
+        return $this->stmt->rowCount();
+    }
 }

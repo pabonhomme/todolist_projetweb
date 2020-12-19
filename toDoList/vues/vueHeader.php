@@ -7,9 +7,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link type="text/css" href="vues/style/accueil.css" rel="stylesheet" media="all">
-    <link type="text/css" href="vues/style/connexion.css" rel="stylesheet" media="all">
     <link type="text/css" href="vues/style/vueDetailListe.css" rel="stylesheet" media="all">
     <link type="text/css" href="vues/style/ajoutDescription.css" rel="stylesheet" media="all">
+    <link type="text/css" href="vues/style/connexion.css" rel="stylesheet" media="all">
 
     <title>To Do List</title>
 </head>
@@ -31,7 +31,11 @@
                     <a class="nav-link" href="index.php">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?action=AfficherConnexion">Se Connecter</a>
+                    <?php if(!ModelUtilisateur::isUtilisateur()){?>
+                        <a class="nav-link" href="index.php?action=AfficherConnexion">Se Connecter</a>
+                    <?php } else { ?>
+                    <a class="nav-link" href="index.php?action=Deconnexion">Se Déconnecter</a>
+                    <?php } ?>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?action=AfficherAide">Aide</a>

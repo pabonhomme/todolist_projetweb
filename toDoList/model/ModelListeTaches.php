@@ -11,7 +11,7 @@ class ModelListeTaches
         return new ListeTaches($result['idListeTaches'], $result['nom'], $result['confidentialite'], $result['description']);
     }
 
-    static function getAllListeTachesPublic()
+    static function getAllListeTachesPublic():array
     {
         global $dsn, $login, $mdp;
         $tabN = array();
@@ -23,7 +23,7 @@ class ModelListeTaches
         return $tabN;
     }
 
-    static function getAllListeTachesByPseudo($pseudo)
+    static function getAllListeTachesByPseudo(string $pseudo):array
     {
         global $dsn, $login, $mdp;
         $tabN = array();
@@ -35,14 +35,14 @@ class ModelListeTaches
         return $tabN;
     }
 
-    static function insertListeTaches($nom, $confidentialite, $description)
+    static function insertListeTaches(string $nom, bool $confidentialite, string $description)
     {
         global $dsn, $login, $mdp;
         $gateway = new ListeTachesGateway(new Connexion($dsn, $login, $mdp));
         $gateway->insertListeTaches($nom, $confidentialite, $description);
     }
 
-    static function deleteListeTaches($idListeTaches)
+    static function deleteListeTaches(int $idListeTaches)
     {
         global $dsn, $login, $mdp;
         $gateway = new ListeTachesGateway(new Connexion($dsn, $login, $mdp));

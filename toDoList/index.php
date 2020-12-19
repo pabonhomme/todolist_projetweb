@@ -9,4 +9,4 @@ require_once(__DIR__ . '/config/Autoload.php');
 // appel de la fonction charger pour instancier
 Autoload::charger();
 
-$cont = new VisiteurControleur();
+$cont = new FrontControleur();

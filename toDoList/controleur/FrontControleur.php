@@ -1,7 +1,7 @@
 <?php
 
 
-class FrontController
+class FrontControleur
 {
     public function __construct()
     {
@@ -11,19 +11,20 @@ class FrontController
         try {
             session_start();
             $listeActions = array(
-                'ControllerUser' => array('Deconnexion', 'AjouterNews', 'supprimer', 'AfficherAddNews'),
-                'ControllerVisitor' => array(NULL,'AfficherDetailListe','AjouterTache','AjouterDescription','AjouterListe', 'SupprimerTache', 'AfficherConnexion', 'AfficherAide'));
+                'UtilisateurControleur' => array('Deconnexion', 'AfficherListeTachesPrivees'),
+                'VisiteurControleur' => array(NULL, 'AfficherDetailListe', 'AjouterTache', 'AjouterDescription', 'AjouterListe', 'SupprimerTache', 'SupprimerListeTaches', 'AfficherConnexion', 'AfficherAide', 'Connexion'));
 
+            $utilisateur = ModelUtilisateur::isUtilisateur();
             if (isset($_REQUEST["action"])) {
                 $action = $_REQUEST["action"];
             } else {
                 $action = NULL;
             }
 
-            $ctrl = $this->rechAction($listeActions, $action);
+            $ctrl = $this->rechAction($listeActions, $action, $utilisateur);
 
             if (!isset($ctrl)) {
-                $erreur[] = "action inconnue";
+                $Vueerreur[] = "action inconnue";
                 require($rep . $vues['erreur']);
                 exit(1);
             }
@@ -34,20 +35,24 @@ class FrontController
             new $ctrl;
 
         } catch (Exception $exception) {
-            $erreur[] = "Action ...";
+            $Vueerreur[] = "Action ...";
             require($rep . $vues['erreur']);
         }
     }
 
-    public function rechAction($listeActions, $action)
+    public function rechAction($listeActions, $action, $utilisateur)
     {
+        global $rep, $vues;
         foreach ($listeActions as $key => $value) {
             if (in_array($action, $value)) {
+                if($key == 'UtilisateurControleur'){
+                    if($utilisateur == null){
+                        require($rep . $vues['connexion']);
+                    }
+                }
                 return $key;
             }
         }
         return NULL;
     }
 }
-
-?>
