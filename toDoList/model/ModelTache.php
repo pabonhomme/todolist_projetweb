@@ -44,6 +44,16 @@ class ModelTache
         return new Tache($result['idTache'], $result['nom'], $result['terminee'], $result['idListeTaches']);
     }
 
+    static function UpdateTerminee($idTache, $terminee)
+    {
+        global $dsn, $login, $mdp;
+        $gateway = new TacheGateway(new Connexion ($dsn, $login, $mdp));
+        if(!$terminee){
+            $gateway->UpdateTerminee($idTache, 0);
+        }
+        else $gateway->UpdateTerminee($idTache, 1);
+    }
+
     static function getNombreDeTache()
     {
         global $dsn, $login, $mdp;

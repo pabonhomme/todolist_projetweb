@@ -35,11 +35,11 @@ class ModelListeTaches
         return $tabN;
     }
 
-    static function insertListeTaches(string $nom, bool $confidentialite, string $description)
+    static function insertListeTaches(string $nom, bool $confidentialite, string $description, $pseudo)
     {
         global $dsn, $login, $mdp;
         $gateway = new ListeTachesGateway(new Connexion($dsn, $login, $mdp));
-        $gateway->insertListeTaches($nom, $confidentialite, $description);
+        $gateway->insertListeTaches($nom, $confidentialite, $description, $pseudo);
     }
 
     static function deleteListeTaches(int $idListeTaches)

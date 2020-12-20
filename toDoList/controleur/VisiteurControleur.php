@@ -26,17 +26,20 @@ class VisiteurControleur
                 case "AjouterTache":
                     $this->AjouterTache();
                     break;
-                case "AjouterDescription":
-                    $this->AjouterDescription();
+                case "AjouterDescriptionPublique":
+                    $this->AjouterDescriptionPublique();
                     break;
-                case "AjouterListe":
-                    $this->AjouterListe();
+                case "AjouterListePublique":
+                    $this->AjouterListePublique();
                     break;
                 case "SupprimerTache":
                     $this->SupprimerTache();
                     break;
                 case "SupprimerListeTaches":
                     $this->SupprimerListeTaches();
+                    break;
+                case "UpdateTerminee":
+                    $this->UpdateTerminee();
                     break;
                 case "Connexion":
                     $this->Connexion();
@@ -90,19 +93,19 @@ class VisiteurControleur
         header('Refresh:0;url=index.php?action=AfficherDetailListe&idListeTaches='.$idListeTaches);
     }
 
-    function AjouterDescription()
+    function AjouterDescriptionPublique()
     {
         global $rep, $vues;
         $nomListe = Nettoyage::NettoyageString($_REQUEST['nomListe']);
         require($rep . $vues['ajoutDescriptionListe']);
     }
 
-    function AjouterListe()
+    function AjouterListePublique()
     {
         $nomListe = Nettoyage::NettoyageString($_REQUEST['nomListe']);
         $description = Nettoyage::NettoyageString($_REQUEST['description']);
-        ModelListeTaches::insertListeTaches($nomListe, false, $description);
-        $this->Reinit();
+        ModelListeTaches::insertListeTaches($nomListe, false, $description, NULL);
+        header('Refresh:0;url=index.php');
     }
 
     function SupprimerTache()
@@ -120,6 +123,16 @@ class VisiteurControleur
         $IdlisteTache = $_REQUEST['idListeTaches'];
         ModelListeTaches::deleteListeTaches($IdlisteTache);
         $this->Reinit();
+    }
+
+    function UpdateTerminee()
+    {
+        global $rep, $vues;
+        $checked=$_REQUEST['UpdateTerminee'];
+        $idTache = $_REQUEST['idTache'];
+        $idListeTaches = ModelTache::getTacheByIdTache($idTache)->getIdListeTaches();
+        ModelTache::UpdateTerminee($idTache, $checked);
+        header('Refresh:0;url=index.php?action=AfficherDetailListe&idListeTaches='.$idListeTaches);
     }
 
     function Connexion()

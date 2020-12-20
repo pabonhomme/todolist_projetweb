@@ -43,6 +43,12 @@ class TacheGateway
         return $this->con->getResult();
     }
 
+    public function UpdateTerminee($idTache, $nombre)
+    {
+        $query = 'UPDATE Tache set terminee=:nombre where idTache=:idTache';
+        $this->con->executeQuery($query, array(':idTache' => array($idTache, PDO::PARAM_INT), ':nombre' => array($nombre, PDO::PARAM_BOOL)));
+    }
+
     public function nbTache()
     {
         $query = 'SELECT count(*) FROM Tache';

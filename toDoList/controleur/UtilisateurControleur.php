@@ -20,6 +20,9 @@ class UtilisateurControleur
                 case "Deconnexion":
                     $this->Deconnexion();
                     break;
+                case "AjouterListePrivee":
+                    $this->AjouterListePrivee();
+                    break;
                 case "AfficherListeTachesPrivees":
                     $this->AfficherListeTachesPrivees();
                     break;
@@ -41,6 +44,16 @@ class UtilisateurControleur
     function Deconnexion(){
         ModelUtilisateur::deconnexion();
         header('Refresh:0;url=index.php');
+    }
+    // CREER AjouterDescriptionPrivee
+
+    function AjouterListePrivee()
+    {
+        $nomListe = Nettoyage::NettoyageString($_REQUEST['nomListe']);
+        $description = Nettoyage::NettoyageString($_REQUEST['description']);
+        $pseudo= $_SESSION['pseudo'];
+        ModelListeTaches::insertListeTaches($nomListe, true, $description, $pseudo);
+        header('Refresh:1;url=index.php');
     }
 
     function AfficherListeTachesPrivees(){

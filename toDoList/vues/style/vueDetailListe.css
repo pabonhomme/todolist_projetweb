@@ -71,3 +71,16 @@ h4
     float: left;
     font-size: 16px;
 }
+
+td{
+    border: none;
+    height: 30px;
+    padding: 2px;
+    text-align: center;
+}
+
+table {
+    color: white;
+    margin: 30px auto;
+    border-collapse: collapse;
+}

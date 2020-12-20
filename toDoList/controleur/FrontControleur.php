@@ -11,8 +11,8 @@ class FrontControleur
         try {
             session_start();
             $listeActions = array(
-                'UtilisateurControleur' => array('Deconnexion', 'AfficherListeTachesPrivees'),
-                'VisiteurControleur' => array(NULL, 'AfficherDetailListe', 'AjouterTache', 'AjouterDescription', 'AjouterListe', 'SupprimerTache', 'SupprimerListeTaches', 'AfficherConnexion', 'AfficherAide', 'Connexion'));
+                'UtilisateurControleur' => array('Deconnexion', 'AjouterListePrivee', 'AfficherListeTachesPrivees'),
+                'VisiteurControleur' => array(NULL, 'AfficherDetailListe', 'AjouterTache', 'AjouterDescriptionPublique', 'AjouterListePublique', 'SupprimerTache', 'SupprimerListeTaches', 'AfficherConnexion', 'AfficherAide', 'Connexion', 'UpdateTerminee'));
 
             $utilisateur = ModelUtilisateur::isUtilisateur();
             if (isset($_REQUEST["action"])) {

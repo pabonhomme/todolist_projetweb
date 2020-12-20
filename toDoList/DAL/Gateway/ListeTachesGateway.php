@@ -25,16 +25,16 @@ class ListeTachesGateway
 
     public function getAllListeTachesByPseudo($pseudo)
     {
-        $query = 'SELECT * FROM ListeTaches where confidentialite = true pseudo=:pseudo order by idListeTaches';
+        $query = 'SELECT * FROM ListeTaches where confidentialite = true and pseudo=:pseudo order by idListeTaches';
         $this->con->executeQuery($query, array(':pseudo' => array($pseudo, PDO::PARAM_STR)));
         return $this->con->getResults();
     }
 
-    public function insertListeTaches($nom, $confidentialite, $description)
+    public function insertListeTaches($nom, $confidentialite, $description, $pseudo)
     {
-        $query = 'Insert into ListeTaches values(NULL, :nom, :confidentialite, :description )';
+        $query = 'Insert into ListeTaches values(NULL, :nom, :confidentialite, :description, :pseudo)';
         $this->con->executeQuery($query, array(':nom' => array($nom, PDO::PARAM_STR),
-            ':confidentialite' => array($confidentialite, PDO::PARAM_INT), ':description' => array($description, PDO::PARAM_STR)));
+            ':confidentialite' => array($confidentialite, PDO::PARAM_INT), ':description' => array($description, PDO::PARAM_STR), ':pseudo' => array($pseudo, PDO::PARAM_STR) ));
     }
 
     public function deleteListeTaches($idListeTaches)
