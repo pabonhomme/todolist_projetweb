@@ -1,7 +1,7 @@
 <?php
 
 
-class ²ListeTaches
+class ListeTaches
 {
     private $idListeTaches;
     private $nom;
