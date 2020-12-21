@@ -95,6 +95,7 @@ class VisiteurControleur
 
     function AjouterDescriptionPublique()
     {
+        $privee=false;
         global $rep, $vues;
         $nomListe = Nettoyage::NettoyageString($_REQUEST['nomListe']);
         require($rep . $vues['ajoutDescriptionListe']);
@@ -102,10 +103,11 @@ class VisiteurControleur
 
     function AjouterListePublique()
     {
+        $privee=false;
         $nomListe = Nettoyage::NettoyageString($_REQUEST['nomListe']);
         $description = Nettoyage::NettoyageString($_REQUEST['description']);
-        ModelListeTaches::insertListeTaches($nomListe, false, $description, NULL);
-        header('Refresh:0;url=index.php');
+        ModelListeTaches::insertListeTaches($nomListe, false, $description, $privee);
+        $this->Reinit();
     }
 
     function SupprimerTache()
