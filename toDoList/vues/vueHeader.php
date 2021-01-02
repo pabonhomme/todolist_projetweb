@@ -6,6 +6,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link type="text/css" href="vues/style/header.css" rel="stylesheet" media="all">
     <link type="text/css" href="vues/style/accueil.css" rel="stylesheet" media="all">
     <link type="text/css" href="vues/style/vueDetailListe.css" rel="stylesheet" media="all">
     <link type="text/css" href="vues/style/ajoutDescription.css" rel="stylesheet" media="all">

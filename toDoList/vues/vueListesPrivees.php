@@ -19,7 +19,7 @@
              as $liste) {
         ?>
         <div class="col-12 col-md-6 col-lg-6 text-center">
-            <figcaption class="ListePublique">
+            <figcaption class="Listes">
                 <h2><?php echo $liste->getNom();
                     $i = 0; ?></h2>
                 <ul>

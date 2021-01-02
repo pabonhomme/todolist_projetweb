@@ -23,7 +23,7 @@ class ModelListeTaches
         return $tabN;
     }
 
-    static function getAllListeTachesByPseudo(string $pseudo):array
+    static function getAllListeTachesByPseudo( $pseudo):array
     {
         global $dsn, $login, $mdp;
         $tabN = array();

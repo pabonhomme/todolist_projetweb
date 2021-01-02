@@ -3,13 +3,26 @@
 class Validation
 {
 
+    public static function ValidationInt (string $nb)
+    {
+        if(!isset($nb) or empty($nb))
+            return false;
+
+        $nb = Nettoyage::NettoyageInt($nb);
+
+        if (filter_var($nb, FILTER_VALIDATE_INT)) {
+            return true;
+        }
+
+        return false;
+    }
 
     public static function ValidationMail(string $email)
     {
         if (!isset($email) or empty($email))
             return false;
 
-        $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+        $email = Nettoyage::NettoyageEmail($email);
 
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return true;

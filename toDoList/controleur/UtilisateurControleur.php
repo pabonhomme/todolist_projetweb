@@ -49,12 +49,14 @@ class UtilisateurControleur
     function AfficherListeTachesPrivees()
     {
         global $rep, $vues, $tacheMax;
-        $pseudo = $_SESSION['pseudo'];
-        $tabListeTaches = ModelListeTaches::getAllListeTachesByPseudo($pseudo);
-        foreach ($tabListeTaches as $liste) {
-            $liste->setListeTaches(ModelTache::getAllTachesByIdListeTaches($liste->getIdListeTaches()));
+        if(ModelUtilisateur::isUtilisateur()){
+            $pseudo = $_SESSION['pseudo'];
+            $tabListeTaches = ModelListeTaches::getAllListeTachesByPseudo($pseudo);
+            foreach ($tabListeTaches as $liste) {
+                $liste->setListeTaches(ModelTache::getAllTachesByIdListeTaches($liste->getIdListeTaches()));
+            }
+            require($rep . $vues['vueListesPrivees']);
         }
-        require($rep . $vues['vueListesPrivees']);
     }
 
     function Deconnexion()
@@ -62,8 +64,6 @@ class UtilisateurControleur
         ModelUtilisateur::deconnexion();
         header('Refresh:0;url=index.php');
     }
-
-    // CREER AjouterDescriptionPrivee
 
     function AjouterDescriptionPrivee()
     {

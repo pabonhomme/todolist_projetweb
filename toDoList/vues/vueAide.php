@@ -2,6 +2,5 @@
 
 <p>Page d'aide</p>
 
-<?php echo $check ?>
 </body>
 

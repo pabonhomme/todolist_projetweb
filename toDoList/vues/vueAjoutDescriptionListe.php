@@ -1,6 +1,6 @@
 <?php require("vueHeader.php") ?>
 
-<div id="container">
+<div id="containerDescription">
 
     <label>Description de la liste de tâches</label>
 

@@ -9,7 +9,7 @@ if (isset($data) && !empty($data)) { ?>
     <?php
 }
 ?>
-<div id="container">
+<div id="containerConnexion">
 
     <h1>Connectez-vous</h1>
         <form method='post' action="index.php?action=Connexion">
@@ -30,8 +30,6 @@ if (isset($data) && !empty($data)) { ?>
         </form>
 
 </div>
-
-<!--    <button class="btn btn-outline-primary" type="submit">CreerSonCompte</button>-->
 
 
 

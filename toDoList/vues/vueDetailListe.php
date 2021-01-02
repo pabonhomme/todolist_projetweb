@@ -9,44 +9,51 @@
         <tr>
             <?php foreach ($listetaches->getListeTaches() as $tache) {
             if (!$tache->getTerminee()) { ?>
-                <div class="text-danger">
+                <div>
                     <td><?php echo $tache->getNom() ?></td>
                 </div>
 
-
                 <td>
-                    <form method="post" action="index.php?action=SupprimerTache" style="width: 200px; margin: auto">
-                        <input type="hidden" name="idTache" value="<?php echo $tache->getIdTache() ?>">
-                        <button class="btn btn-outline-primary" type="submit"> Supprimer Tache</button>
+                    <form method="post" action="index.php?action=UpdateTerminee">
+                        <div class="d-inline-flex">
+                            <input type="hidden" name="idTache" value="<?php echo $tache->getIdTache() ?>">
+                            <input type="checkbox" class="mt-3 ml-3 align-self-center" name="UpdateTerminee" value="1">
+                            <input type="submit" class="addBtn mt-3 ml-3" id="updateTerminee" value="Valider">
+                        </div>
                     </form>
+
                 </td>
 
                 <td>
-                    <form method="post" action="index.php?action=UpdateTerminee">
+                    <form method="post" action="index.php?action=SupprimerTache">
                         <input type="hidden" name="idTache" value="<?php echo $tache->getIdTache() ?>">
-                        <input type="checkbox" name="UpdateTerminee" value="1">
-                        <input type="submit" value="Valider">
+                        <button class="btn btn-outline-primary inputSupprimerTache" type="submit"> Supprimer Tache</button>
                     </form>
                 </td>
 
 
             <?php }
             if ($tache->getTerminee()) { ?>
-                <div class="text-success" style="text-decoration:line-through;">
-                    <td><?php echo $tache->getNom() ?></td>
+                <div>
+                    <td>
+                        <del><?php echo $tache->getNom() ?></del>
+                    </td>
                 </div>
-                <td>
-                    <form method="post" action="index.php?action=SupprimerTache"
-                          style="width: 200px; margin: auto; height: 100px">
-                        <input type="hidden" name="idTache" value="<?php echo $tache->getIdTache() ?>">
-                        <button class="btn btn-outline-primary" type="submit"> Supprimer Tache</button>
-                    </form>
-                </td>
+
                 <td>
                     <form method="post" action="index.php?action=UpdateTerminee">
+                        <div class="d-inline-flex">
                         <input type="hidden" name="idTache" value="<?php echo $tache->getIdTache() ?>">
-                        <input type="checkbox" name="UpdateTerminee" value="0" checked>
-                        <input type="submit" value="Valider">
+                        <input type="checkbox" class="mt-3 ml-3 align-self-center" name="UpdateTerminee" value="0" checked>
+                        <input type="submit" class="addBtn  mt-3 ml-3" id="updateTerminee" value="Valider">
+                        </div>
+                    </form>
+                </td>
+
+                <td>
+                    <form method="post" action="index.php?action=SupprimerTache">
+                        <input type="hidden" name="idTache" value="<?php echo $tache->getIdTache() ?>">
+                        <button class="btn btn-outline-primary inputSupprimerTache" type="submit"> Supprimer Tache</button>
                     </form>
                 </td>
 
@@ -61,23 +68,21 @@
     <article><?php echo $listetaches->getDescription() ?></article>
 </div>
 
-<div class="container">
-    <div id="AjoutTache">
-        <h2>Ajouter une tâche</h2>
-        <form method="post" action="index.php?action=AjouterTache">
-            <input type="hidden" name="idListeTaches" value="<?php echo $listetaches->getIdListeTaches() ?>">
-            <input id="BoutonAjoutTache" name="NomTache" type="text" placeholder="Entrez le nom de la tâche">
-            <input type="submit" class="AddBtn mb-5" value="Ajouter la tâche">
-        </form>
-    </div>
+<div class="container AjoutEntite">
+    <h2>Ajouter une tâche</h2>
+    <form method="post" action="index.php?action=AjouterTache">
+        <input type="hidden" name="idListeTaches" value="<?php echo $listetaches->getIdListeTaches() ?>">
+        <input class="InputSaisie" name="NomTache" type="text" placeholder="Entrez le nom de la tâche" required>
+        <input type="submit" class="AddBtn mb-5 InputSaisie" value="Ajouter la tâche">
+    </form>
 </div>
 
 <div class="container">
 
 
-    <form method="post" action="index.php?action=SupprimerListeTaches" style="width: 35%; margin-bottom: 50">
+    <form method="post" action="index.php?action=SupprimerListeTaches" >
         <input type="hidden" name="idListeTaches" value="<?php echo $listetaches->getIdListeTaches() ?>">
-        <button class="btn btn-outline-primary" type="submit"> Supprimer Liste Taches</button>
+        <button class="btn btn-outline-primary" id="inputSupprimerListe" type="submit"> Supprimer Liste Taches</button>
     </form>
 
 </div>

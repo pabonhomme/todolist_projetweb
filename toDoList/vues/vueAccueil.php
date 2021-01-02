@@ -1,13 +1,11 @@
 <?php require("vueHeader.php") ?>
 
-<div class="container">
-    <div class="AjoutListe">
+<div class="container AjoutEntite">
         <h2>Ajout d'une liste publique</h2>
         <form method='post' action="index.php?action=AjouterDescriptionPublique">
-            <input type="text" name="nomListe" placeholder="Nom de la liste..." value="" required>
-            <input type="submit" class="AddBtn" value="Ajouter la liste">
+            <input class="InputSaisie" type="text" name="nomListe" placeholder="Nom de la liste..." value="" required>
+            <input type="submit" class="AddBtn InputSaisie" value="Ajouter la liste">
         </form>
-    </div>
 </div>
 
 <div class="row align-items-start">
@@ -19,7 +17,7 @@
              as $liste) {
         ?>
         <div class="col-12 col-md-6 col-lg-6 text-center">
-            <figcaption class="ListePublique">
+            <figcaption class="Listes">
                 <h2><?php echo $liste->getNom();
                     $i = 0; ?></h2>
                 <ul>

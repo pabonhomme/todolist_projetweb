@@ -1,77 +1,22 @@
-/*JUMBOTTRON DE LA PAGE*/
-#accroche {
-    background-color: #238bc4;
-    background-size: cover;
-    text-align: center;
-    color:white;
-    padding : 75;
-}
 
 
-/NAVBAR/
-.rounded.float-left {
-    height: 75px;
-}
-
-
-.nav-link {
-    border-bottom: 3px solid #238bc4;
-    margin-right: 5;
-}
-
-
+/* div qui contient la page */
 #VoirPlusTache
 {
     text-align: center;
     color: white;
     padding: 20;
     box-shadow: 0 0 3px 3px #54c2ff;
-
 }
 
-h2
-{
-    font-weight: bold;
-}
-
-h4
-{
-    text-decoration: underline;
-}
-
-#AjoutTache {
-    background-size: cover;
-    background-repeat: no-repeat;
+/* tableau pour aligner les taches */
+table {
     color: white;
-    text-align: left;
-    margin-top: 50px;
+    margin: 30px auto;
+    border-collapse: collapse;
 }
 
-.addBtn {
-    padding: 10px;
-    background: #d9d9d9;
-    color: #555;
-    text-align: center;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-    border-radius: 0;
-}
-
-.addBtn:hover {
-    background-color: #bbb;
-}
-
-#BoutonAjoutTache {
-    margin: 0;
-    border: none;
-    border-radius: 0;
-    width: 75%;
-    padding: 10px;
-    float: left;
-    font-size: 16px;
-}
-
+/* cellule du tableau */
 td{
     border: none;
     height: 30px;
@@ -79,8 +24,20 @@ td{
     text-align: center;
 }
 
-table {
-    color: white;
-    margin: 30px auto;
-    border-collapse: collapse;
+/* bouton qui valide une tache cochée ou décochée */
+#updateTerminee{
+    width: 100%;
+}
+/* bouton de suppresion de tache */
+.inputSupprimerTache{
+    padding: 14px;
+    margin-left: 20;
+}
+
+/* bouton de suppresion de la liste de taches */
+#inputSupprimerListe{
+    width: 100%;
+    margin-bottom: 100px;
+    align-self: center;
+    margin-top: 50px;
 }

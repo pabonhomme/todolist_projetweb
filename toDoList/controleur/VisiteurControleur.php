@@ -107,7 +107,7 @@ class VisiteurControleur
         $nomListe = Nettoyage::NettoyageString($_REQUEST['nomListe']);
         $description = Nettoyage::NettoyageString($_REQUEST['description']);
         ModelListeTaches::insertListeTaches($nomListe, false, $description, $privee);
-        $this->Reinit();
+        header('Refresh:0;url=index.php');
     }
 
     function SupprimerTache()

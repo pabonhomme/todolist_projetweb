@@ -29,9 +29,6 @@ class FrontControleur
                 exit(1);
             }
 
-//            DEFINE("IS_ADMIN", ModelUtilisateur::IsAdmin());
-//            DEFINE("IS_LOG", ModelUtilisateur::IsLog());
-
             new $ctrl;
 
         } catch (Exception $exception) {
@@ -45,8 +42,8 @@ class FrontControleur
         global $rep, $vues;
         foreach ($listeActions as $key => $value) {
             if (in_array($action, $value)) {
-                if($key == 'UtilisateurControleur'){
-                    if($utilisateur == null){
+                if ($key == 'UtilisateurControleur') {
+                    if (!$utilisateur) {
                         require($rep . $vues['connexion']);
                     }
                 }
