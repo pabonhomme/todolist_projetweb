@@ -2,7 +2,7 @@
 
 <div class="container AjoutEntite">
     <h2>Ajout d'une liste privée</h2>
-    <form method='post' action="index.php?action=AjouterDescriptionPrivee">
+    <form method='post' action="index.php?action=AjouterTitreListePrivee">
         <input class="InputSaisie" type="text" name="nomListe" placeholder="Nom de la liste..." value="" required>
         <input type="submit" class="AddBtn InputSaisie" value="Ajouter la liste">
     </form>

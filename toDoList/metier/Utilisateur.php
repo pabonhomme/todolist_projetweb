@@ -1,6 +1,9 @@
 <?php
 
-
+/**
+ * classe métier d'un utilisateur
+ * Class Utilisateur
+ */
 class Utilisateur
 {
     private $pseudo;

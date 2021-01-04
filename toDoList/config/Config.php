@@ -5,9 +5,6 @@ $rep = __DIR__ . '/../';
 
 // variable pour le nombre de tache maximum visible sur page d'accueil
 $tacheMax = 3;
-// liste des modules à inclure
-
-//$dConfig['includes']=array('Validation.php');
 
 //BD
 $dsn = 'mysql:host=localhost;dbname=toDoList;charset=utf8';

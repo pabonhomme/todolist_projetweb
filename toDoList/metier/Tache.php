@@ -1,6 +1,9 @@
 <?php
 
-
+/**
+ * classe métier d'une tâche
+ * Class Tache
+ */
 class Tache
 {
     private $idTache;
@@ -25,35 +28,19 @@ class Tache
     }
 
     /**
-     * @return mixed
-     */
-    public function getNom()
-    {
-        return $this->nom;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTerminee()
-    {
-        return $this->terminee;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIdListeTaches()
-    {
-        return $this->idListeTaches;
-    }
-
-    /**
      * @param mixed $idTache
      */
     public function setIdTache($idTache)
     {
         $this->idTache = $idTache;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNom()
+    {
+        return $this->nom;
     }
 
     /**
@@ -65,11 +52,27 @@ class Tache
     }
 
     /**
+     * @return mixed
+     */
+    public function getTerminee()
+    {
+        return $this->terminee;
+    }
+
+    /**
      * @param mixed $terminee
      */
     public function setTerminee($terminee)
     {
         $this->terminee = $terminee;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdListeTaches()
+    {
+        return $this->idListeTaches;
     }
 
     /**

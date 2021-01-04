@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Permet d'instancier une classe à chaque instance d'une classe
+ * Class Autoload
+ */
 class Autoload
 {
     private static $_instance = null;
@@ -34,7 +38,7 @@ class Autoload
     {
         global $rep;
         $filename = $class . '.php';
-        $dir = array('model/', './', 'config/', 'DAL/', 'DAL/gateway/', 'controleur/', 'metier/');
+        $dir = array('model/', './', 'config/', 'DAL/', 'DAL/gateway/', 'controleur/', 'metier/'); // contient tous dossiers du projet
         foreach ($dir as $d) {
             $file = $rep . $d . $filename;
             //echo $file;

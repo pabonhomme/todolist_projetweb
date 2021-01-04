@@ -1,10 +1,17 @@
 <?php
 
-
+/**
+ * classe contenant les fonctions pour une tache
+ * Class ModelTache
+ */
 class ModelTache
 {
-
-    static function getAllTachesByIdListeTaches($idListeTaches):array
+    /**
+     * Permet la récupération de toutes les tâches d'une liste par son IDListe
+     * @param int $idListeTaches id de la liste de tâches
+     * @return array
+     */
+    static function getAllTachesByIdListeTaches(int $idListeTaches):array
     {
         global $dsn, $login, $mdp;
         $tabN = array();
@@ -16,35 +23,55 @@ class ModelTache
         return $tabN;
     }
 
-    static function insertTache($nom, $terminee, $idListeTaches)
+    /**
+     * Permet l'insertion d'une Tâche dans une liste grâce à son IDListe
+     * @param string $nom nom de la tâche à ajouter
+     * @param bool $terminee booleen permettant de signifier si la tâche est finie ou non
+     * @param int $idListeTaches ID de la liste de tâches
+     */
+    static function insertTache(string $nom, bool $terminee, int $idListeTaches)
     {
         global $dsn, $login, $mdp;
         $gateway = new TacheGateway(new Connexion($dsn, $login, $mdp));
         $gateway->insertTache($nom, $terminee, $idListeTaches);
     }
 
-    static function deleteTachebyIdTache($idTache)
+    /** Permet la suppression d'une tâche en fonction d'un IDTache
+     * @param int $idTache id de la tâche à supprimer
+     */
+    static function deleteTachebyIdTache(int $idTache)
     {
         global $dsn, $login, $mdp;
         $gateway = new TacheGateway(new Connexion($dsn, $login, $mdp));
         $gateway->deleteTachebyIdTache($idTache);
     }
 
-    static function deleteTacheByIdListeTaches($idListeTaches)
+    /** Permet la suppression des tâches d'une liste grâce à l'IDListe (est appelée dans la fonction deleteListeTaches de modelListetache)
+     * @param int $idListeTaches
+     */
+    static function deleteTachesByIdListeTaches(int $idListeTaches)
     {
         global $dsn, $login, $mdp;
         $gateway = new TacheGateway(new Connexion($dsn, $login, $mdp));
-        $gateway->deleteTacheByIdListeTaches($idListeTaches);
+        $gateway->deleteTachesByIdListeTaches($idListeTaches);
     }
 
-    static function getTacheByIdTache($idTache){
+    /** Permet la récupération d'une tâche par son ID
+     * @param int $idTache  id de la tâche à récupérer
+     * @return Tache
+     */
+    static function getTacheByIdTache(int $idTache){
         global $dsn, $login, $mdp;
         $gateway = new TacheGateway(new Connexion($dsn, $login, $mdp));
         $result = $gateway->getTacheByIdTache($idTache);
         return new Tache($result['idTache'], $result['nom'], $result['terminee'], $result['idListeTaches']);
     }
 
-    static function UpdateTerminee($idTache, $terminee)
+    /** Permet de modifier le statut de la tâche (fini ou non)
+     * @param int $idTache id de la tâche dont le statut doit être modifié
+     * @param bool $terminee booleen permettant de signifier si la tâche est finie ou non
+     */
+    static function UpdateTerminee(int $idTache, bool $terminee)
     {
         global $dsn, $login, $mdp;
         $gateway = new TacheGateway(new Connexion ($dsn, $login, $mdp));
@@ -54,6 +81,9 @@ class ModelTache
         else $gateway->UpdateTerminee($idTache, 1);
     }
 
+    /** Permet de retourner le nombre de tâches de toutes les listes
+     * @return mixed
+     */
     static function getNombreDeTache()
     {
         global $dsn, $login, $mdp;

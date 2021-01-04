@@ -1,11 +1,11 @@
 <?php require("vueHeader.php") ?>
 
 <div class="container AjoutEntite">
-        <h2>Ajout d'une liste publique</h2>
-        <form method='post' action="index.php?action=AjouterDescriptionPublique">
-            <input class="InputSaisie" type="text" name="nomListe" placeholder="Nom de la liste..." value="" required>
-            <input type="submit" class="AddBtn InputSaisie" value="Ajouter la liste">
-        </form>
+    <h2>Ajout d'une liste publique</h2>
+    <form method='post' action="index.php?action=AjouterTitreListePublique">
+        <input class="InputSaisie" type="text" name="nomListe" placeholder="Nom de la liste..." value="" required>
+        <input type="submit" class="AddBtn InputSaisie" value="Ajouter la liste">
+    </form>
 </div>
 
 <div class="row align-items-start">
@@ -25,6 +25,11 @@
                         if (!$tache->getTerminee() && $i <= $tacheMax) { ?>
                             <li><?php echo $tache->getNom();
                                 $i++ ?></li>
+                        <?php } else { ?>
+                            <li>
+                                <del><?php echo $tache->getNom();
+                                    $i++ ?></del>
+                            </li>
                         <?php }
                     } ?>
                     <li>etc ...</li>

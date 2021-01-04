@@ -2,22 +2,30 @@
 
 class Validation
 {
-
-    public static function ValidationString(string $val):bool{
+    /** Permet la validation d'un STRING
+     * @param string $val valeur reçue
+     * @return bool
+     */
+    public static function ValidationString(string $val): bool
+    {
 
         $val = Nettoyage::NettoyageString($val);
 
-        if(!isset($val) or empty($val)) {
+        if (!isset($val) or empty($val)) {
             return false;
-        }
-        else return true;
+        } else return true;
     }
 
-    public static function ValidationInt (int $nb):bool
+    /**
+     * Permet la validation d'un INT
+     * @param int $nb nombre reçu
+     * @return bool
+     */
+    public static function ValidationInt(int $nb): bool
     {
         $nb = Nettoyage::NettoyageInt($nb);
 
-        if(!isset($nb) or empty($nb))
+        if (!isset($nb) or empty($nb))
             return false;
 
         if (filter_var($nb, FILTER_VALIDATE_INT)) {
@@ -27,7 +35,11 @@ class Validation
         return false;
     }
 
-    public static function ValidationMail(string $email):bool
+    /** Permet la validation d'un EMAIL
+     * @param string $email email reçu
+     * @return bool
+     */
+    public static function ValidationMail(string $email): bool
     {
         $email = Nettoyage::NettoyageEmail($email);
 
@@ -42,7 +54,11 @@ class Validation
 
     }
 
-    public static function ValidationBoolean(bool $boolean):bool
+    /** Permet la validation d'un BOOL
+     * @param bool $boolean boolean reçu
+     * @return bool
+     */
+    public static function ValidationBoolean(bool $boolean): bool
     {
         if (!isset($boolean) or empty($boolean))
             return false;
@@ -56,25 +72,28 @@ class Validation
 
     }
 
+    /** Permet la validation de la connexion
+     * @param string $pseudo pseudo reçu
+     * @param string $mdp mot de passe reçu
+     * @return mixed retourne un tableau contenant les erreurs
+     */
     public static function ValidationConnexion(string $pseudo, string $mdp)
     {
 
-        if (!isset($pseudo)||$pseudo=="") {
-            $Vueerreur[] =	"il n'y pas de login";
+        if (!isset($pseudo) || $pseudo == "") { //Si le pseudo est null ou vide
+            $Vueerreur[] = "il n'y pas de login";
         }
 
-        if ($pseudo != Nettoyage::NettoyageString($pseudo))
+        if ($pseudo != Nettoyage::NettoyageString($pseudo)) //Teste si le pseudo est sous une bonne forme
         {
-            $dVueEreur[] =	"Il y a une tentative d'injection de code (attaque sécurité)";
+            $Vueerreur[] = "Vous avez rentré votre pseudo avec des caractères invalides";
         }
 
-        if (!isset($mdp)||$mdp=="") {
-            $Vueerreur[] =	"il n'y a pas de mot de passe ";
+        if (!isset($mdp) || $mdp == "") { //Si le mot de passe est null ou vide
+            $Vueerreur[] = "il n'y a pas de mot de passe ";
         }
 
         return $Vueerreur;
 
     }
-
-
 }
