@@ -5,7 +5,8 @@ Programmation Web côté serveur
 G7 Chevassus Noé & Bonhomme Paul
 
 
-Le projet est un site Web permettant dans un premier temps de consulter des to-Do-List communes à tous les utilisateurs sur le site Web. Elle sont supprimables et le visiteur peut en ajouter.
+Le projet est un site Web permettant dans un premier temps de consulter des to-Do-List communes à tous les utilisateurs sur le site Web. 
+Elle sont supprimables et le visiteur peut en ajouter.
 En effet, il peut créer une nouvelle liste publique contenant une description, un titre et divers tâches.
 Il peut aussi ajouter des tâches à cette liste et valider une tâche lorsque celle-ci est finie.
 Divers fonctionnalités sont mises en place.
@@ -38,4 +39,4 @@ Liaison vues avec HTML et PHP
 -Visiteur Controler
 -Modeles 
 
------------------------------------ Prise en main du site web --------------------------------------------
+-------------------------------------------------------------------------------------------------------
