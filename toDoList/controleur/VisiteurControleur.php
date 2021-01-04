@@ -143,10 +143,10 @@ class VisiteurControleur
         $description = Nettoyage::NettoyageString($_REQUEST['description']);
         if (Validation::ValidationString($description)) { // si la description n'est pas vide
             ModelListeTaches::insertListeTaches($nomListe, $privee, $description, $pseudo);
-            header('Refresh:0;url=index.php');
+            $this->Reinit();
         } else {
             ModelListeTaches::insertListeTaches($nomListe, $privee, "La liste n'a pas de description", $pseudo);
-            header('Refresh:0;url=index.php');
+            $this->Reinit();
         }
 
     }
@@ -169,7 +169,7 @@ class VisiteurControleur
     {
         $IdlisteTache = $_REQUEST['idListeTaches'];
         ModelListeTaches::deleteListeTaches($IdlisteTache);
-        header('Refresh:0;url=index.php');
+        $this->Reinit();
     }
 
     /**
