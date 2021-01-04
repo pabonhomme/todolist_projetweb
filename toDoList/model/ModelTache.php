@@ -69,9 +69,9 @@ class ModelTache
 
     /** Permet de modifier le statut de la tâche (fini ou non)
      * @param int $idTache id de la tâche dont le statut doit être modifié
-     * @param bool $terminee booleen permettant de signifier si la tâche est finie ou non
+     * @param $terminee //booleen permettant de signifier si la tâche est finie ou non
      */
-    static function UpdateTerminee(int $idTache, bool $terminee)
+    static function UpdateTerminee(int $idTache, $terminee)
     {
         global $dsn, $login, $mdp;
         $gateway = new TacheGateway(new Connexion ($dsn, $login, $mdp));
