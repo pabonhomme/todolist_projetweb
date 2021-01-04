@@ -75,7 +75,7 @@ class ModelListeTaches
         global $dsn, $login, $mdp;
         $gateway = new ListeTachesGateway(new Connexion($dsn, $login, $mdp));
         ModelTache::deleteTachesByIdListeTaches($idListeTaches); // suppression de toutes les tâches de la liste
-        $gateway->deleteListeTaches($idListeTaches); // suppresion de la liste
+        $gateway->deleteListeTaches($idListeTaches); // suppression de la liste
     }
 
     /**
