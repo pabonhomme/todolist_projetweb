@@ -10,7 +10,7 @@ class UtilisateurGateway
         $this->con = $c;
     }
 
-    public function rechercherUtilisateur(string $pseudo, string $mdp)
+    public function rechercherUtilisateur(string $pseudo, string $mdp):bool
     {
         $query = 'SELECT * FROM UTILISATEUR WHERE pseudo= :pseudo';
         $this->con->executeQuery($query, array(':pseudo' => array($pseudo, PDO::PARAM_STR)));

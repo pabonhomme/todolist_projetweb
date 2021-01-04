@@ -16,18 +16,15 @@ class UtilisateurControleur
             }
 
             switch ($action) {
-
                 case "AfficherListeTachesPrivees":
                     $this->AfficherListeTachesPrivees();
                     break;
-
                 case "Deconnexion":
                     $this->Deconnexion();
                     break;
                 case "AjouterListePrivee":
                     $this->AjouterListePrivee();
                     break;
-
                 case "AjouterDescriptionPrivee":
                     $this->AjouterDescriptionPrivee();
                     break;
@@ -67,21 +64,35 @@ class UtilisateurControleur
 
     function AjouterDescriptionPrivee()
     {
-        $privee=true;
+        $privee=true;// confidentialite de la liste
         global $rep, $vues;
         $nomListe = Nettoyage::NettoyageString($_REQUEST['nomListe']);
-        require($rep . $vues['ajoutDescriptionListe']);
+        if(Validation::ValidationString($nomListe)){
+            require($rep . $vues['ajoutDescriptionListe']);
+        }
+        else{
+            $Vueerreur[] = "Le nom de la liste ne peut pas contenir des balises";
+            require($rep . $vues['erreur']);
+            header('Refresh:2;url=index.php?action=AfficherListeTachesPrivees');
+        }
     }
 
 
     function AjouterListePrivee()
     {
-        $privee = true;
+        $privee = true;// confidentialite de la liste
         $nomListe = Nettoyage::NettoyageString($_REQUEST['nomListe']);
         $description = Nettoyage::NettoyageString($_REQUEST['description']);
         $pseudo = $_SESSION['pseudo'];
-        ModelListeTaches::insertListeTaches($nomListe, true, $description, $pseudo);
-        header('Refresh:1;url=index.php');
+        if(Validation::ValidationString($description)){
+            ModelListeTaches::insertListeTaches($nomListe, $privee, $description, $pseudo);
+            header('Refresh:0;url=index.php');
+        }
+        else{
+            ModelListeTaches::insertListeTaches($nomListe, $privee, "La liste n'a pas de description", $pseudo);
+            header('Refresh:0;url=index.php');
+        }
+
     }
 
 

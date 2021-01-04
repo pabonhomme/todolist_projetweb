@@ -3,12 +3,22 @@
 class Validation
 {
 
-    public static function ValidationInt (string $nb)
+    public static function ValidationString(string $val):bool{
+
+        $val = Nettoyage::NettoyageString($val);
+
+        if(!isset($val) or empty($val)) {
+            return false;
+        }
+        else return true;
+    }
+
+    public static function ValidationInt (int $nb):bool
     {
+        $nb = Nettoyage::NettoyageInt($nb);
+
         if(!isset($nb) or empty($nb))
             return false;
-
-        $nb = Nettoyage::NettoyageInt($nb);
 
         if (filter_var($nb, FILTER_VALIDATE_INT)) {
             return true;
@@ -17,12 +27,12 @@ class Validation
         return false;
     }
 
-    public static function ValidationMail(string $email)
+    public static function ValidationMail(string $email):bool
     {
+        $email = Nettoyage::NettoyageEmail($email);
+
         if (!isset($email) or empty($email))
             return false;
-
-        $email = Nettoyage::NettoyageEmail($email);
 
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return true;
@@ -32,7 +42,7 @@ class Validation
 
     }
 
-    public static function ValidationBoolean(bool $boolean)
+    public static function ValidationBoolean(bool $boolean):bool
     {
         if (!isset($boolean) or empty($boolean))
             return false;
@@ -46,7 +56,7 @@ class Validation
 
     }
 
-    public static function ValidationConnnexion(string $pseudo, string $mdp)
+    public static function ValidationConnexion(string $pseudo, string $mdp)
     {
 
         if (!isset($pseudo)||$pseudo=="") {

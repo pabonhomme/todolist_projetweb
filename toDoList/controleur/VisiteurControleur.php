@@ -89,25 +89,51 @@ class VisiteurControleur
         global $rep, $vues;
         $NomTache = Nettoyage::NettoyageString($_REQUEST['NomTache']);
         $idListeTaches = $_REQUEST['idListeTaches'];
-        ModelTache::insertTache($NomTache, false, $idListeTaches);
-        header('Refresh:0;url=index.php?action=AfficherDetailListe&idListeTaches='.$idListeTaches);
+        if(Validation::ValidationString($NomTache)){
+            ModelTache::insertTache($NomTache, false, $idListeTaches);
+            header('Refresh:0;url=index.php?action=AfficherDetailListe&idListeTaches='.$idListeTaches);
+        }
+        else{
+            $Vueerreur[] = "Le nom de la tache ne peut pas contenir des balises";
+            require($rep . $vues['erreur']);
+            header('Refresh:2;url=index.php?action=AfficherDetailListe&idListeTaches='.$idListeTaches);
+        }
+
     }
 
     function AjouterDescriptionPublique()
     {
-        $privee=false;
+        $privee=false;// confidentialite de la liste
         global $rep, $vues;
         $nomListe = Nettoyage::NettoyageString($_REQUEST['nomListe']);
-        require($rep . $vues['ajoutDescriptionListe']);
+        if(Validation::ValidationString($nomListe)){
+            require($rep . $vues['ajoutDescriptionListe']);
+        }
+        else{
+            $Vueerreur[] = "Le nom de la liste ne peut pas contenir des balises";
+            require($rep . $vues['erreur']);
+            header('Refresh:2;url=index.php');
+        }
+
     }
 
     function AjouterListePublique()
     {
-        $privee=false;
+        global $rep, $vues;
+        $privee=false; // confidentialite de la liste
+        $pseudo = NULL; // liste publique donc pseudo égal à NULL
+
         $nomListe = Nettoyage::NettoyageString($_REQUEST['nomListe']);
         $description = Nettoyage::NettoyageString($_REQUEST['description']);
-        ModelListeTaches::insertListeTaches($nomListe, false, $description, $privee);
-        header('Refresh:0;url=index.php');
+        if(Validation::ValidationString($description)){
+            ModelListeTaches::insertListeTaches($nomListe, $privee, $description, $pseudo);
+            header('Refresh:0;url=index.php');
+        }
+        else {
+            ModelListeTaches::insertListeTaches($nomListe, $privee, "La liste n'a pas de description", $pseudo);
+            header('Refresh:0;url=index.php');
+        }
+
     }
 
     function SupprimerTache()
@@ -144,7 +170,7 @@ class VisiteurControleur
         $mdp = $_REQUEST['mdp'];
         $data = array();
         if (isset($pseudo) && isset($mdp)){
-            $Vueerreur = Validation::ValidationConnnexion($pseudo, $mdp);
+            $Vueerreur = Validation::ValidationConnexion($pseudo, $mdp);
             if(empty($Vueerreur)){
                 if(ModelUtilisateur::connexion($pseudo, $mdp)){
                         $data[] = "Connexion réussie !";

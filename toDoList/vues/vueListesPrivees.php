@@ -1,13 +1,11 @@
 <?php require("vueHeader.php") ?>
 
-<div class="container">
-    <div class="AjoutListe">
-        <h2>Ajout d'une liste privée</h2>
-        <form method='post' action="index.php?action=AjouterDescriptionPrivee">
-            <input type="text" name="nomListe" placeholder="Nom de la liste..." value="" required>
-            <input type="submit" class="AddBtn" value="Ajouter la liste">
-        </form>
-    </div>
+<div class="container AjoutEntite">
+    <h2>Ajout d'une liste privée</h2>
+    <form method='post' action="index.php?action=AjouterDescriptionPrivee">
+        <input class="InputSaisie" type="text" name="nomListe" placeholder="Nom de la liste..." value="" required>
+        <input type="submit" class="AddBtn InputSaisie" value="Ajouter la liste">
+    </form>
 </div>
 
 <div class="row align-items-start">
