@@ -1,0 +1,18 @@
+PAUL : 
+-fonctions de connexion
+-Front controler
+-Modele Utilisateur
+
+Noé : 
+-Vues en html
+-Fonctions de suppression
+-Validation et Nettoyage
+
+
+
+Ensemble : 
+Liaison vues avec HTML et PHP 
+-Utilisateur Controler
+-Visiteur Controler
+-Fonction Ajout
+-Modeles 
